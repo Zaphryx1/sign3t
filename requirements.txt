@@ -1,1 +1,14 @@
-# Python dependencies
+streamlit
+python-dotenv
+pandas
+numpy
+scikit-learn
+sentence-transformers
+requests
+urllib3
+ollama
+supabase
+psycopg2-binary
+pgvector
+opencv-python
+pillow

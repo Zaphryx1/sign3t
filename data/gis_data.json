@@ -1,0 +1,167 @@
+[
+    {
+        "location": "123 Main St",
+        "location_type": "residential",
+        "crime_history": ["domestic_violence", "assault", "noise_complaints"],
+        "risk_factors": ["poor_lighting", "isolated_area", "known_drug_activity"],
+        "access_points": 2,
+        "escape_routes": 1,
+        "nearby_landmarks": ["school", "park"],
+        "population_density": "medium",
+        "socioeconomic_status": "low_income"
+    },
+    {
+        "location": "456 Oak Ave",
+        "location_type": "apartment_complex",
+        "crime_history": ["mental_health_crisis", "drug_activity", "vandalism"],
+        "risk_factors": ["multiple_units", "poor_security", "high_turnover"],
+        "access_points": 4,
+        "escape_routes": 3,
+        "nearby_landmarks": ["hospital", "mental_health_clinic"],
+        "population_density": "high",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "555 Elm Street",
+        "location_type": "commercial",
+        "crime_history": ["shots_fired", "gang_activity", "robbery"],
+        "risk_factors": ["gang_territory", "high_crime_area", "multiple_businesses"],
+        "access_points": 6,
+        "escape_routes": 4,
+        "nearby_landmarks": ["shopping_center", "bus_stop"],
+        "population_density": "high",
+        "socioeconomic_status": "low_income"
+    },
+    {
+        "location": "777 Maple Dr",
+        "location_type": "apartment_complex",
+        "crime_history": ["drug_activity", "theft", "domestic_violence"],
+        "risk_factors": ["known_drug_dealer", "poor_lighting", "isolated_corner"],
+        "access_points": 3,
+        "escape_routes": 2,
+        "nearby_landmarks": ["convenience_store", "park"],
+        "population_density": "medium",
+        "socioeconomic_status": "low_income"
+    },
+    {
+        "location": "999 Central Ave",
+        "location_type": "commercial",
+        "crime_history": ["robbery", "theft", "vandalism"],
+        "risk_factors": ["high_value_targets", "late_hours", "poor_security"],
+        "access_points": 2,
+        "escape_routes": 1,
+        "nearby_landmarks": ["bank", "restaurant"],
+        "population_density": "medium",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "333 Park Blvd",
+        "location_type": "public_space",
+        "crime_history": ["gang_activity", "drug_activity", "assault"],
+        "risk_factors": ["gang_meeting_spot", "poor_lighting", "isolated_area"],
+        "access_points": 8,
+        "escape_routes": 6,
+        "nearby_landmarks": ["playground", "community_center"],
+        "population_density": "low",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "444 Family Way",
+        "location_type": "residential",
+        "crime_history": ["domestic_violence", "custody_disputes", "stalking"],
+        "risk_factors": ["ongoing_custody_battle", "emotional_volatility", "weapon_access"],
+        "access_points": 1,
+        "escape_routes": 1,
+        "nearby_landmarks": ["school", "church"],
+        "population_density": "low",
+        "socioeconomic_status": "middle_income"
+    },
+    {
+        "location": "666 Industrial Blvd",
+        "location_type": "industrial",
+        "crime_history": ["arson", "theft", "vandalism"],
+        "risk_factors": ["flammable_materials", "poor_security", "disgruntled_employees"],
+        "access_points": 3,
+        "escape_routes": 2,
+        "nearby_landmarks": ["warehouse", "loading_dock"],
+        "population_density": "very_low",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "888 Residential Ln",
+        "location_type": "residential",
+        "crime_history": ["stalking", "harassment", "trespassing"],
+        "risk_factors": ["ongoing_stalking", "victim_vulnerability", "suspect_knows_layout"],
+        "access_points": 2,
+        "escape_routes": 1,
+        "nearby_landmarks": ["neighborhood_watch", "police_station"],
+        "population_density": "low",
+        "socioeconomic_status": "middle_income"
+    },
+    {
+        "location": "111 Bar Street",
+        "location_type": "entertainment",
+        "crime_history": ["assault", "disorderly_conduct", "alcohol_violations"],
+        "risk_factors": ["alcohol_involved", "crowded_conditions", "late_hours"],
+        "access_points": 2,
+        "escape_routes": 1,
+        "nearby_landmarks": ["parking_lot", "other_bars"],
+        "population_density": "high",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "222 Senior Center Dr",
+        "location_type": "healthcare",
+        "crime_history": ["elder_abuse", "theft", "fraud"],
+        "risk_factors": ["vulnerable_population", "isolation", "caregiver_access"],
+        "access_points": 3,
+        "escape_routes": 2,
+        "nearby_landmarks": ["hospital", "pharmacy"],
+        "population_density": "medium",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "333 Community Center",
+        "location_type": "public_space",
+        "crime_history": ["hate_crime", "vandalism", "harassment"],
+        "risk_factors": ["diverse_population", "public_gathering", "emotional_volatility"],
+        "access_points": 5,
+        "escape_routes": 4,
+        "nearby_landmarks": ["library", "gym"],
+        "population_density": "medium",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "444 Campus Ave",
+        "location_type": "educational",
+        "crime_history": ["sexual_assault", "stalking", "harassment"],
+        "risk_factors": ["young_vulnerable_population", "isolated_areas", "alcohol_involved"],
+        "access_points": 8,
+        "escape_routes": 6,
+        "nearby_landmarks": ["dormitories", "library"],
+        "population_density": "very_high",
+        "socioeconomic_status": "mixed"
+    },
+    {
+        "location": "555 Convention Center",
+        "location_type": "commercial",
+        "crime_history": ["terrorist_threat", "bomb_threat", "suspicious_activity"],
+        "risk_factors": ["large_crowds", "high_profile_target", "multiple_entrances"],
+        "access_points": 12,
+        "escape_routes": 8,
+        "nearby_landmarks": ["hotel", "restaurant"],
+        "population_density": "very_high",
+        "socioeconomic_status": "high_income"
+    },
+    {
+        "location": "666 Warehouse District",
+        "location_type": "industrial",
+        "crime_history": ["human_trafficking", "drug_activity", "theft"],
+        "risk_factors": ["isolated_location", "poor_lighting", "minimal_security"],
+        "access_points": 4,
+        "escape_routes": 2,
+        "nearby_landmarks": ["loading_dock", "truck_stop"],
+        "population_density": "very_low",
+        "socioeconomic_status": "low_income"
+    }
+]

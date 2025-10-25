@@ -1,0 +1,78 @@
+[
+    {
+        "text": "Caller reports shouting and glass breaking. Suspect has prior assault charges.",
+        "metadata": {"location": "123 Main St", "timestamp": "2024-01-15T10:30:00Z", "caller": "Neighbor", "priority": "high", "incident_type": "domestic_violence"}
+    },
+    {
+        "text": "Previous incident: domestic violence, weapon involved.",
+        "metadata": {"location": "123 Main St", "timestamp": "2024-01-10T14:20:00Z", "caller": "Dispatch", "priority": "high", "incident_type": "domestic_violence"}
+    },
+    {
+        "text": "Mental health crisis reported. Individual appears agitated and may be armed.",
+        "metadata": {"location": "456 Oak Ave", "timestamp": "2024-01-15T16:45:00Z", "caller": "Family Member", "priority": "critical", "incident_type": "mental_health"}
+    },
+    {
+        "text": "Burglary in progress. Suspects fled on foot toward Main Street.",
+        "metadata": {"location": "789 Pine Ln", "timestamp": "2024-01-15T20:15:00Z", "caller": "Homeowner", "priority": "high", "incident_type": "burglary"}
+    },
+    {
+        "text": "Traffic stop escalated. Driver appears intoxicated and aggressive.",
+        "metadata": {"location": "Highway 101 & Main St", "timestamp": "2024-01-15T22:30:00Z", "caller": "Officer", "priority": "medium", "incident_type": "traffic_violation"}
+    },
+    {
+        "text": "Gunshots heard in the area. Multiple witnesses report seeing armed individuals.",
+        "metadata": {"location": "555 Elm Street", "timestamp": "2024-01-16T08:15:00Z", "caller": "Multiple", "priority": "critical", "incident_type": "shots_fired"}
+    },
+    {
+        "text": "Drug activity reported. Known dealer operating from apartment complex.",
+        "metadata": {"location": "777 Maple Dr", "timestamp": "2024-01-16T12:30:00Z", "caller": "Anonymous", "priority": "medium", "incident_type": "drug_activity"}
+    },
+    {
+        "text": "Robbery in progress at convenience store. Suspect armed with knife.",
+        "metadata": {"location": "999 Central Ave", "timestamp": "2024-01-16T15:45:00Z", "caller": "Store Employee", "priority": "high", "incident_type": "robbery"}
+    },
+    {
+        "text": "Suicidal individual on bridge. Mental health crisis in progress.",
+        "metadata": {"location": "River Bridge & 1st St", "timestamp": "2024-01-16T18:20:00Z", "caller": "Passerby", "priority": "critical", "incident_type": "mental_health"}
+    },
+    {
+        "text": "Gang activity reported. Multiple vehicles with known gang members.",
+        "metadata": {"location": "333 Park Blvd", "timestamp": "2024-01-16T21:00:00Z", "caller": "Resident", "priority": "high", "incident_type": "gang_activity"}
+    },
+    {
+        "text": "Child custody dispute. Father threatening violence if not allowed to see child.",
+        "metadata": {"location": "444 Family Way", "timestamp": "2024-01-17T09:30:00Z", "caller": "Mother", "priority": "high", "incident_type": "domestic_violence"}
+    },
+    {
+        "text": "Arson attempt reported. Individual seen pouring gasoline around building.",
+        "metadata": {"location": "666 Industrial Blvd", "timestamp": "2024-01-17T14:15:00Z", "caller": "Security Guard", "priority": "critical", "incident_type": "arson"}
+    },
+    {
+        "text": "Stalking complaint. Ex-partner following victim and making threats.",
+        "metadata": {"location": "888 Residential Ln", "timestamp": "2024-01-17T16:45:00Z", "caller": "Victim", "priority": "medium", "incident_type": "stalking"}
+    },
+    {
+        "text": "Bar fight escalating. Multiple patrons involved, weapons may be present.",
+        "metadata": {"location": "111 Bar Street", "timestamp": "2024-01-17T23:30:00Z", "caller": "Bouncer", "priority": "high", "incident_type": "assault"}
+    },
+    {
+        "text": "Elderly abuse reported. Caregiver physically assaulting patient.",
+        "metadata": {"location": "222 Senior Center Dr", "timestamp": "2024-01-18T11:20:00Z", "caller": "Nurse", "priority": "high", "incident_type": "elder_abuse"}
+    },
+    {
+        "text": "Hate crime in progress. Individual being targeted for race/religion.",
+        "metadata": {"location": "333 Community Center", "timestamp": "2024-01-18T13:45:00Z", "caller": "Witness", "priority": "critical", "incident_type": "hate_crime"}
+    },
+    {
+        "text": "Sexual assault reported. Victim seeking immediate help and protection.",
+        "metadata": {"location": "444 Campus Ave", "timestamp": "2024-01-18T19:30:00Z", "caller": "Victim", "priority": "critical", "incident_type": "sexual_assault"}
+    },
+    {
+        "text": "Human trafficking suspected. Multiple individuals being held against will.",
+        "metadata": {"location": "666 Warehouse District", "timestamp": "2024-01-19T02:15:00Z", "caller": "Anonymous", "priority": "critical", "incident_type": "human_trafficking"}
+    },
+    {
+        "text": "Active shooter situation. Multiple casualties reported at shopping mall.",
+        "metadata": {"location": "777 Shopping Center", "timestamp": "2024-01-19T14:30:00Z", "caller": "Mall Security", "priority": "critical", "incident_type": "active_shooter"}
+    }
+]
