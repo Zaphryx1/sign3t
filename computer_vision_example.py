@@ -43,7 +43,7 @@ def run_computer_vision_demo():
     
     print(f"Detected {len(threat_detections)} objects:")
     for det in threat_detections:
-        print(f"  • {det['object']}")
+        print(f"   {det['object']}")
         print(f"    Threat Level: {det['threat_level']}")
         print(f"    Confidence: {det['confidence']:.1%}")
         print(f"    Description: {det['description']}\n")
@@ -61,7 +61,7 @@ def run_computer_vision_demo():
     
     print("Threat Breakdown:")
     for level, count in analysis['threat_breakdown'].items():
-        print(f"  • {level}: {count}")
+        print(f"   {level}: {count}")
 
     # --- 3. Recommendations & Safety Protocols ---
     print("\n3. RECOMMENDATIONS & SAFETY PROTOCOLS")
@@ -109,10 +109,10 @@ def run_computer_vision_demo():
         print("Simulated Analysis Results:")
         # Here you would call the actual CV analysis with a specific image for the scenario
         # For this demo, we'll just print a placeholder
-        print("  • AI would detect relevant objects")
-        print("  • Threat level would be assessed")
-        print("  • Appropriate recommendations generated")
-        print("  • Safety protocols activated")
+        print("   AI would detect relevant objects")
+        print("   Threat level would be assessed")
+        print("   Appropriate recommendations generated")
+        print("   Safety protocols activated")
 
     print("\n" + "=" * 60)
     print("INTEGRATION WITH SIGN3T SYSTEM")

@@ -89,18 +89,40 @@ class AdvancedThreatAssessment:
             query_embedding = embedding_model.encode(f"threat assessment {location}").tolist()
             
             # Search for relevant documents
-            documents = supabase_manager.search_documents(query_embedding, limit=10)
+            documents = supabase_manager.search_documents(query_embedding, limit=15)
             
-            # Filter by location if possible
+            # Filter by location if possible, but be more flexible
             location_docs = []
+            location_lower = location.lower()
+            
             for doc in documents:
-                content = doc.get('content', '')
+                content = doc.get('content', '').lower()
                 metadata = doc.get('metadata', {})
-                if (isinstance(content, str) and location.lower() in content.lower()) or \
-                   (isinstance(metadata, dict) and location.lower() in str(metadata).lower()):
+                
+                # Check if location appears in content or metadata
+                location_found = False
+                
+                # Check content
+                if location_lower in content:
+                    location_found = True
+                
+                # Check metadata
+                if isinstance(metadata, dict):
+                    metadata_str = str(metadata).lower()
+                    if location_lower in metadata_str:
+                        location_found = True
+                
+                # If location found, add to results
+                if location_found:
                     location_docs.append(doc)
             
-            return location_docs if location_docs else documents[:3]
+            # If we found location-specific docs, return them
+            if location_docs:
+                return location_docs[:8]
+            
+            # Otherwise, return top documents from vector search (they're still relevant)
+            return documents[:5]
+            
         except Exception as e:
             print(f"Error retrieving documents: {e}")
             return []
@@ -222,48 +244,105 @@ class AdvancedThreatAssessment:
         return location_docs[:8]  # Return up to 8 diverse documents
 
     def analyze_threat_indicators(self, location: str) -> Dict[str, Any]:
-        """Analyze threat indicators from all data sources using local AI"""
+        """Analyze threat indicators from all data sources using local AI or fallback analysis"""
         # Get relevant documents from Supabase
         documents = self.get_relevant_documents(location)
         
-        # Combine document content for context
-        context_parts = [doc['content'] for doc in documents]
-        context = f"Location: {location}. " + " ".join(context_parts)
+        # If no documents found, return empty analysis
+        if not documents:
+            return {
+                "threat_factors": [],
+                "weapons": [],
+                "violence_history": [],
+                "mental_health_indicators": False,
+                "raw_response": "No data found for location",
+                "source_documents": documents
+            }
         
-        response = self.local_ai.analyze_threat(location, context)
-        
-        # Handle both dict and string responses
-        if isinstance(response, dict):
-            # Extract from structured response
-            threat_factors = response.get("threat_factors", [])
-            weapons = response.get("weapons", [])
-            violence_history = response.get("violence_history", [])
-            mental_health_indicators = response.get("mental_health_indicators", False)
-            raw_response = str(response)
+        # Try to use local AI first
+        if self.local_ai.is_available():
+            # Combine document content for context
+            context_parts = [doc['content'] for doc in documents]
+            context = f"Location: {location}. " + " ".join(context_parts)
+            
+            response = self.local_ai.analyze_threat(location, context)
+            
+            # Handle both dict and string responses
+            if isinstance(response, dict):
+                # Extract from structured response
+                threat_factors = response.get("threat_factors", [])
+                weapons = response.get("weapons", [])
+                violence_history = response.get("violence_history", [])
+                mental_health_indicators = response.get("mental_health_indicators", False)
+                raw_response = str(response)
+            else:
+                # Handle string response with regex parsing
+                raw_response = str(response)
+                threat_factors = []
+                weapons = []
+                violence_history = []
+                mental_health_indicators = False
+
+                if "weapons mentioned" in raw_response.lower() or "weapon involved" in raw_response.lower():
+                    threat_factors.append("Weapons involved")
+                    weapons.append("Unknown weapon")
+                if "violence history present" in raw_response.lower() or "assault charges" in raw_response.lower() or "domestic violence" in raw_response.lower():
+                    threat_factors.append("History of violence")
+                    violence_history.append("Prior assault charges")
+                if "mental health concerns" in raw_response.lower() or "mental health crisis" in raw_response.lower():
+                    threat_factors.append("Mental health crisis")
+                    mental_health_indicators = True
         else:
-            # Handle string response with regex parsing
-            raw_response = str(response)
+            # Fallback: Analyze documents directly without AI
             threat_factors = []
             weapons = []
             violence_history = []
             mental_health_indicators = False
-
-            if "weapons mentioned" in raw_response.lower() or "weapon involved" in raw_response.lower():
-                threat_factors.append("Weapons involved")
-                weapons.append("Unknown weapon") # Placeholder
-            if "violence history present" in raw_response.lower() or "assault charges" in raw_response.lower() or "domestic violence" in raw_response.lower():
-                threat_factors.append("History of violence")
-                violence_history.append("Prior assault charges") # Placeholder
-            if "mental health concerns" in raw_response.lower() or "mental health crisis" in raw_response.lower():
-                threat_factors.append("Mental health crisis")
-                mental_health_indicators = True
+            
+            # Analyze each document for threat indicators
+            for doc in documents:
+                content = doc['content'].lower()
+                metadata = doc.get('metadata', {})
+                
+                # Check for weapons
+                weapon_keywords = ['weapon', 'gun', 'knife', 'firearm', 'tireiron', 'bomb', 'explosive']
+                if any(keyword in content for keyword in weapon_keywords):
+                    threat_factors.append("Weapons involved")
+                    # Extract specific weapons
+                    for keyword in weapon_keywords:
+                        if keyword in content:
+                            weapons.append(keyword.title())
+                
+                # Check for violence history
+                violence_keywords = ['assault', 'violence', 'domestic violence', 'battery', 'fighting', 'struggle']
+                if any(keyword in content for keyword in violence_keywords):
+                    threat_factors.append("History of violence")
+                    violence_history.append("Prior violent incidents")
+                
+                # Check for mental health indicators
+                mental_health_keywords = ['mental health', 'crisis', 'agitated', 'distressed', 'suicidal']
+                if any(keyword in content for keyword in mental_health_keywords):
+                    threat_factors.append("Mental health crisis")
+                    mental_health_indicators = True
+                
+                # Check for drug activity
+                drug_keywords = ['drug', 'dealer', 'substance', 'intoxicated']
+                if any(keyword in content for keyword in drug_keywords):
+                    threat_factors.append("Drug activity")
+            
+            # Remove duplicates
+            threat_factors = list(set(threat_factors))
+            weapons = list(set(weapons))
+            violence_history = list(set(violence_history))
+            
+            raw_response = f"Fallback analysis: Found {len(threat_factors)} threat factors"
 
         return {
             "threat_factors": threat_factors,
             "weapons": weapons,
             "violence_history": violence_history,
             "mental_health_indicators": mental_health_indicators,
-            "raw_response": response,
+            "raw_response": raw_response,
             "source_documents": documents
         }
     
@@ -275,20 +354,26 @@ class AdvancedThreatAssessment:
         # Weapons involved - check multiple possible keys
         weapons = indicators.get("weapons", []) or indicators.get("weapons_involved", [])
         if weapons:
-            score += 3
+            score += 4  # Increased from 3
             risk_factors.append("Weapons involved")
         
         # Violence history - check multiple possible keys
         violence_history = indicators.get("violence_history", []) or indicators.get("risk_factors", [])
-        if violence_history and any("violence" in str(item).lower() for item in violence_history):
-            score += 2
+        if violence_history and any("violence" in str(item).lower() or "violent" in str(item).lower() or "assault" in str(item).lower() for item in violence_history):
+            score += 3  # Increased from 2
             risk_factors.append("History of violence")
         
         # Mental health crisis - check multiple possible keys
         mental_health = indicators.get("mental_health_indicators", []) or indicators.get("mental_health_concerns", False)
         if mental_health or (violence_history and any("mental" in str(item).lower() for item in violence_history)):
-            score += 2
+            score += 3  # Increased from 2
             risk_factors.append("Mental health crisis")
+        
+        # Drug activity
+        threat_factors = indicators.get("threat_factors", [])
+        if any("drug" in str(factor).lower() for factor in threat_factors):
+            score += 2
+            risk_factors.append("Drug activity")
         
         # Determine threat level
         if score >= 6:

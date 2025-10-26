@@ -25,23 +25,23 @@ RISK FACTORS:
 """
     
     for factor in assessment.risk_factors:
-        briefing += f"• {factor}\n"
+        briefing += f" {factor}\n"
     
     if assessment.weapons_involved:
         briefing += f"\nWEAPONS INVOLVED:\n"
         for weapon in assessment.weapons_involved:
-            briefing += f"• {weapon}\n"
+            briefing += f" {weapon}\n"
     
     if assessment.known_individuals:
         briefing += f"\nKNOWN INDIVIDUALS:\n"
         for person in assessment.known_individuals:
-            briefing += f"• {person['name']} ({person['role']}) - Risk: {person['risk_level']}\n"
+            briefing += f" {person['name']} ({person['role']}) - Risk: {person['risk_level']}\n"
             briefing += f"  History: {person['history']}\n"
     
     if assessment.location_risks:
         briefing += f"\nLOCATION RISKS:\n"
         for risk in assessment.location_risks:
-            briefing += f"• {risk}\n"
+            briefing += f" {risk}\n"
     
     briefing += f"\nDE-ESCALATION RECOMMENDATIONS:\n"
     for i, rec in enumerate(assessment.de_escalation_recommendations, 1):

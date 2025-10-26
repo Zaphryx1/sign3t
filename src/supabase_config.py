@@ -25,14 +25,15 @@ class SupabaseManager:
     def _connect(self):
         """Initialize Supabase client"""
         try:
-            if not SUPABASE_URL or SUPABASE_URL == "https://vuwyztuvovtfzktgkqei.supabase.co":
+            # Allow default credentials for testing
+            if not SUPABASE_URL:
                 print("WARNING  Supabase not configured. Using local mode.")
                 return
                 
             self.client = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
-            print(" Connected to Supabase")
+            print("Connected to Supabase")
         except Exception as e:
-            print(f" Failed to connect to Supabase: {e}")
+            print(f"Failed to connect to Supabase: {e}")
             print(" Using local mode - data will be stored in memory")
     
     def is_connected(self) -> bool:
@@ -90,7 +91,7 @@ class SupabaseManager:
                 'search_documents',
                 {
                     'query_embedding': query_embedding,
-                    'match_threshold': 0.7,
+                    'match_threshold': 0.1,  # Lower threshold to get more results
                     'match_count': limit
                 }
             ).execute()

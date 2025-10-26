@@ -87,7 +87,13 @@ if ! ollama list | grep -q "llama3.2"; then
     ollama pull llama3.2
 fi
 
-# Run data ingestion
+# Clean tables and feed data to Supabase
+print_status "Cleaning Supabase tables..."
+python clean_tables.py
+print_status "Feeding data to Supabase..."
+python feed_data.py
+
+# Run data ingestion (fallback)
 print_status "Running data ingestion..."
 cd src
 python -c "
@@ -123,11 +129,11 @@ echo ""
 print_success "Sign3T System Ready!"
 echo ""
 echo "System Information:"
-echo "  • Python Version: $(python --version)"
-echo "  • Virtual Environment: Active"
-echo "  • Dependencies: Installed"
-echo "  • Data Sources: Configured"
-echo "  • AI Models: Ready"
+echo "  - Python Version: $(python --version)"
+echo "  - Virtual Environment: Active"
+echo "  - Dependencies: Installed"
+echo "  - Data Sources: Configured"
+echo "  - AI Models: Ready"
 echo ""
 
 # Display usage instructions
@@ -141,11 +147,11 @@ echo ""
 
 # Display features
 echo "Key Features:"
-echo "  • AI-powered threat assessment"
-echo "  • Multi-source data integration"
-echo "  • De-escalation recommendations"
-echo "  • Privacy and compliance"
-echo "  • Real-time surveillance simulation"
+echo "  - AI-powered threat assessment"
+echo "  - Multi-source data integration"
+echo "  - De-escalation recommendations"
+echo "  - Privacy and compliance"
+echo "  - Real-time surveillance simulation"
 echo ""
 
 # Start the application

@@ -70,9 +70,5 @@
     {
         "text": "Human trafficking suspected. Multiple individuals being held against will.",
         "metadata": {"location": "666 Warehouse District", "timestamp": "2024-01-19T02:15:00Z", "caller": "Anonymous", "priority": "critical", "incident_type": "human_trafficking"}
-    },
-    {
-        "text": "Active shooter situation. Multiple casualties reported at shopping mall.",
-        "metadata": {"location": "777 Shopping Center", "timestamp": "2024-01-19T14:30:00Z", "caller": "Mall Security", "priority": "critical", "incident_type": "active_shooter"}
     }
 ]

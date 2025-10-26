@@ -158,17 +158,17 @@ def display_threat_assessment(assessment: ThreatAssessment):
     with tab1:
         st.subheader("Risk Factors")
         for factor in assessment.risk_factors:
-            st.markdown(f"• {factor}")
+            st.markdown(f" {factor}")
         
         if assessment.weapons_involved:
             st.subheader("Weapons Involved")
             for weapon in assessment.weapons_involved:
-                st.markdown(f"• {weapon}")
+                st.markdown(f" {weapon}")
         
         if assessment.location_risks:
             st.subheader("Location Risks")
             for risk in assessment.location_risks:
-                st.markdown(f"• {risk}")
+                st.markdown(f" {risk}")
     
     with tab2:
         if assessment.known_individuals:
